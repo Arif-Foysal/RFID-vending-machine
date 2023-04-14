@@ -15,20 +15,20 @@ To get started with this project, you will need to have the following components
 
 Once you have all of the components, you can follow these steps to set up the project:
 
-    Connect the RFID reader module to the Arduino board using wires and a breadboard.
-    Connect the servo motors to the Arduino board using wires and a breadboard.
-    Connect the LCD display to the Arduino board using wires and a breadboard.
-    Upload the code to the Arduino board.
+   - Connect the RFID reader module to the Arduino board using wires and a breadboard.
+   - Connect the servo motors to the Arduino board using wires and a breadboard.
+   - Connect the LCD display to the Arduino board using wires and a breadboard.
+   - Upload the code to the Arduino board.
 
 The code for this project is located in the code directory of this repository. To upload the code to the Arduino board, you will need to use the Arduino IDE or another compatible programming tool.
 Usage
 
 To use the vending machine, follow these steps:
 
-    Approach the vending machine with an RFID tag that has been programmed with payment information.
-    Scan the RFID tag using the RFID reader module.
-    Select the item you would like to purchase using the LCD display.
-    The servo motors will rotate to dispense the selected item.
+   - Approach the vending machine with an RFID tag that has been programmed with payment information.
+   - Scan the RFID tag using the RFID reader module.
+   - Select the item you would like to purchase using the LCD display.
+   - The servo motors will rotate to dispense the selected item.
 
 Contributing
 
