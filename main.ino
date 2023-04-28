@@ -11,8 +11,8 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 Servo s1;
 Servo s2;
 
-bool s1is180 = false;
-bool s2is180 = false;
+bool s1is180 = true;
+bool s2is180 = true;
 
 
 int button_wait_time = 20000;
@@ -67,28 +67,8 @@ void setup() {
   s1.attach(9);
   s2.attach(8);
   //s1
-  if (s1.read() > 90) {
-    s1.write(180);
-    s1is180=true;
-  }
-  else if (s1.read() < 90) {
-    s1.write(0);
-  }
-  else {
-    s1.write(0);
-  }
-//s2
-if (s2.read() > 90) {
-    s2.write(180);
-    s2is180=true;
-  }
-  else if (s2.read() < 90) {
-    s2.write(0);
-  }
-  else {
-    s2.write(0);
-  }
-  
+ s1.write(180);
+  s2.write(180);
 }
 
 void loop() {
@@ -160,14 +140,17 @@ void loop() {
     }
   //s1-button1
   if (button1Pressed) {
-  
-   if (s1is180) {
-      s1.write(0);
-      s1is180=false;
-    } else {
-      s1.write(180);
-      s1is180=true;
-    }
+  for (int i=180; i>=90; i--) {
+  s1.write(i);
+  delay(15);  
+  }
+  for (int i=90; i<=180; i++) {
+  s1.write(i);
+  delay(15);  
+  }
+  //  s1.write(90);
+  //  delay(500);
+  //  s1.write(180);
     Serial.println("Thank you for your purchase");
     printStringsOnLCD("THANK YOU FOR", "YOUR PURCHASE");
     button1Pressed=false;
@@ -175,14 +158,22 @@ void loop() {
   }
    //s2-button1
   if (button2Pressed) {
-  
-   if (s2is180) {
-      s2.write(0);
-      s2is180=false;
-    } else {
-      s2.write(180);
-      s2is180=true;
-    }
+
+   for (int i=180; i>=90; i--) {
+  s2.write(i);
+  delay(15);  
+  }
+  for (int i=90; i<=180; i++) {
+  s2.write(i);
+  delay(15);  
+  }
+  //  if (s2is180) {
+  //     s2.write(0);
+  //     s2is180=false;
+  //   } else {
+  //     s2.write(180);
+  //     s2is180=true;
+  //   }
     Serial.println("Thank you for your purchase");
     printStringsOnLCD("THANK YOU FOR", "YOUR PURCHASE");
     button2Pressed=false;
@@ -192,8 +183,6 @@ void loop() {
   
   }
   
-    
-   
   else   
   {
     Serial.println("Access denied");
@@ -201,4 +190,3 @@ void loop() {
     delay(1000);
   }
 }
-
